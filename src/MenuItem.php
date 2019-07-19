@@ -568,7 +568,10 @@ class MenuItem implements ArrayableContract
      */
     protected function getActiveStateFromUrl()
     {
-        return Request::is('*'.$this->url.'*');
+        if ($this->url != '/')
+            return Request::is('*' . $this->url . '*');
+        else
+            return false;
     }
 
     /**
